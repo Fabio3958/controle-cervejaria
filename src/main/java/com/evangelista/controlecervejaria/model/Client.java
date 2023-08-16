@@ -1,5 +1,6 @@
 package com.evangelista.controlecervejaria.model;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -13,6 +14,8 @@ public class Client {
     private String clientPhoneNumber;
     private String clientEmail;
     private Date clientBirthday;
+    @Embedded
+    private Address clientAddress;
 
     public Client(){}
 
