@@ -1,14 +1,20 @@
 package com.evangelista.controlecervejaria.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Address {
 
+    @Column(name="estado")
     private String clientState;
+    @Column(name="cidade")
     private String clientCity;
+    @Column(name="bairro")
     private String clientDistrict;
+    @Column(name="rua")
     private String clientStreet;
+    @Column(name="numero_casa")
     private String clientAddressNumber;
 
     public Address(){}

@@ -1,21 +1,30 @@
 package com.evangelista.controlecervejaria.model;
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="cliente_id")
     private Long id;
+    @Column(name="nome")
     private String clientName;
+    @Column(name="telefone")
     private String clientPhoneNumber;
+    @Column(name="email")
     private String clientEmail;
+    @Column(name="data_de_nascimento")
     private Date clientBirthday;
     @Embedded
     private Address clientAddress;
+    @OneToMany
+    @JoinColumn(name = "client_id")
+    private List<Demand> demandList = new ArrayList<>();
 
     public Client(){}
 
@@ -65,5 +74,13 @@ public class Client {
 
     public void setClientBirthday(Date clientBirthday) {
         this.clientBirthday = clientBirthday;
+    }
+
+    public List<Demand> getOrderList() {
+        return demandList;
+    }
+
+    public void setOrderList(List<Demand> demandList) {
+        this.demandList = demandList;
     }
 }

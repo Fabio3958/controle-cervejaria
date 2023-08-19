@@ -1,12 +1,15 @@
 package com.evangelista.controlecervejaria.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
 public class Barrel {
     @Id
+    @Column(name="barril_id")
     private Long id;
+    @Column(name="capacidade")
     private Double barrelVolume;
 
     public Barrel(){}
