@@ -2,7 +2,11 @@ package com.evangelista.controlecervejaria.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
+@Table(name = "pedido")
 public class Demand {
 
     @Id
@@ -11,6 +15,11 @@ public class Demand {
     private Long id;
     @Column(name = "valor")
     private Double demandValue;
+
+    //TODO Conferir o relacionamento
+    @ManyToMany
+    @Column(name = "barril_id")
+    private List<Barrel> barrelList = new ArrayList<>();
 
     public Demand(){}
 
@@ -33,5 +42,13 @@ public class Demand {
 
     public void setDemandValue(Double demandValue) {
         this.demandValue = demandValue;
+    }
+
+    public List<Barrel> getBarrelList(){
+        return barrelList;
+    }
+
+    public void setBarrelList(List<Barrel> barrelList){
+        this.barrelList = barrelList;
     }
 }

@@ -1,10 +1,9 @@
 package com.evangelista.controlecervejaria.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "barril")
 public class Barrel {
     @Id
     @Column(name="barril_id")
