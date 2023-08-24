@@ -1,6 +1,8 @@
 package com.evangelista.controlecervejaria.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,21 +22,26 @@ public class Client {
     @Column(name="email")
     private String clientEmail;
     @Column(name="data_de_nascimento")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date clientBirthday;
-    @Embedded
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "endereco_id")
     private Address clientAddress;
     @OneToMany
     @JoinColumn(name = "client_id")
     private List<Demand> demandList = new ArrayList<>();
 
+
+
     public Client(){}
 
-    public Client(Long id, String clientName, String clientPhoneNumber, String clientEmail, Date clientBirthday) {
+    public Client(Long id, String clientName, String clientPhoneNumber, String clientEmail, Date clientBirthday, Address clientAddress) {
         this.id = id;
         this.clientName = clientName;
         this.clientPhoneNumber = clientPhoneNumber;
         this.clientEmail = clientEmail;
         this.clientBirthday = clientBirthday;
+        this.clientAddress = clientAddress;
     }
 
     public Long getId() {
@@ -77,11 +84,15 @@ public class Client {
         this.clientBirthday = clientBirthday;
     }
 
-    public List<Demand> getOrderList() {
+    public List<Demand> getDemandList() {
         return demandList;
     }
 
-    public void setOrderList(List<Demand> demandList) {
+    public void setDemandList(List<Demand> demandList) {
         this.demandList = demandList;
+    }
+
+    public void setClientAddress(Address clientAddress) {
+        this.clientAddress = clientAddress;
     }
 }
