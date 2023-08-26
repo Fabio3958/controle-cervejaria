@@ -16,16 +16,16 @@ public class Demand {
     @Column(name = "valor")
     private Double demandValue;
 
-    //TODO Conferir o relacionamento
     @ManyToMany
     @Column(name = "barril_id")
     private List<Barrel> barrelList = new ArrayList<>();
 
     public Demand(){}
 
-    public Demand(Long id, Double demandValue) {
+    public Demand(Long id, Double demandValue, List<Barrel> barrelList) {
         this.id = id;
         this.demandValue = demandValue;
+        this.barrelList = barrelList;
     }
 
     public Long getId() {

@@ -24,9 +24,14 @@ public class Client {
     @Column(name="data_de_nascimento")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date clientBirthday;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "endereco_id")
-    private Address clientAddress;
+    @Column(name="cidade")
+    private String clientCity;
+    @Column(name="bairro")
+    private String clientDistrict;
+    @Column(name="rua")
+    private String clientStreet;
+    @Column(name="numero_casa")
+    private String clientAddressNumber;
     @OneToMany
     @JoinColumn(name = "client_id")
     private List<Demand> demandList = new ArrayList<>();
@@ -35,13 +40,19 @@ public class Client {
 
     public Client(){}
 
-    public Client(Long id, String clientName, String clientPhoneNumber, String clientEmail, Date clientBirthday, Address clientAddress) {
+    public Client(Long id, String clientName, String clientPhoneNumber, String clientEmail, Date clientBirthday,
+                  String clientCity, String clientDistrict, String clientStreet,
+                  String clientAddressNumber, List<Demand> demandList) {
         this.id = id;
         this.clientName = clientName;
         this.clientPhoneNumber = clientPhoneNumber;
         this.clientEmail = clientEmail;
         this.clientBirthday = clientBirthday;
-        this.clientAddress = clientAddress;
+        this.clientCity = clientCity;
+        this.clientDistrict = clientDistrict;
+        this.clientStreet = clientStreet;
+        this.clientAddressNumber = clientAddressNumber;
+        this.demandList = demandList;
     }
 
     public Long getId() {
@@ -92,7 +103,35 @@ public class Client {
         this.demandList = demandList;
     }
 
-    public void setClientAddress(Address clientAddress) {
-        this.clientAddress = clientAddress;
+    public String getClientCity() {
+        return clientCity;
+    }
+
+    public void setClientCity(String clientCity) {
+        this.clientCity = clientCity;
+    }
+
+    public String getClientDistrict() {
+        return clientDistrict;
+    }
+
+    public void setClientDistrict(String clientDistrict) {
+        this.clientDistrict = clientDistrict;
+    }
+
+    public String getClientStreet() {
+        return clientStreet;
+    }
+
+    public void setClientStreet(String clientStreet) {
+        this.clientStreet = clientStreet;
+    }
+
+    public String getClientAddressNumber() {
+        return clientAddressNumber;
+    }
+
+    public void setClientAddressNumber(String clientAddressNumber) {
+        this.clientAddressNumber = clientAddressNumber;
     }
 }
