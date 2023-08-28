@@ -41,7 +41,7 @@ public class DemandController {
 
     @PostMapping("salvar")
     public void postDemand(@RequestBody Demand demand){
-        calculateDemandTotalValue(demand.getBarrelList());
+        demand.setDemandValue(calculateDemandTotalValue(demand.getBarrelList()));
         demandRepository.save(demand);
     }
 
