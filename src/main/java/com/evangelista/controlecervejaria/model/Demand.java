@@ -13,12 +13,11 @@ public class Demand {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="pedido_id")
     private Long id;
-    @Column(name = "valor")
-    private Double demandValue;
-
     @ManyToMany
     @Column(name = "barril_id")
     private List<Barrel> barrelList = new ArrayList<>();
+    @Column(name = "valor")
+    private Double demandValue;
 
     public Demand(){}
 
