@@ -5,6 +5,7 @@ import com.evangelista.controlecervejaria.model.Client;
 import com.evangelista.controlecervejaria.model.Demand;
 import com.evangelista.controlecervejaria.repository.DemandRepository;
 import com.evangelista.controlecervejaria.service.DemandService;
+import com.evangelista.controlecervejaria.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class DemandServiceImplement implements DemandService {
     @Override
     public Demand findById(Long id) {
         Optional<Demand> demand = demandRepository.findById(id);
-        return demand.orElse(null);
+        return demand.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Demand.class.getName()));
     }
 
     @Override

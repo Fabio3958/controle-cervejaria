@@ -1,8 +1,10 @@
 package com.evangelista.controlecervejaria.service.implement;
 
 import com.evangelista.controlecervejaria.model.Barrel;
+import com.evangelista.controlecervejaria.model.Demand;
 import com.evangelista.controlecervejaria.repository.BarrelRepository;
 import com.evangelista.controlecervejaria.service.BarrelService;
+import com.evangelista.controlecervejaria.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ public class BarrelServiceImplement implements BarrelService {
     @Override
     public Barrel findById(Long id) {
         Optional<Barrel> barrel = barrelRepository.findById(id);
-        return barrel.orElse(null);
+        return barrel.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Barrel.class.getName()));
     }
 
     @Override

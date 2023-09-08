@@ -1,8 +1,10 @@
 package com.evangelista.controlecervejaria.service.implement;
 
 import com.evangelista.controlecervejaria.model.Client;
+import com.evangelista.controlecervejaria.model.Demand;
 import com.evangelista.controlecervejaria.repository.ClientRepository;
 import com.evangelista.controlecervejaria.service.ClientService;
+import com.evangelista.controlecervejaria.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ public class ClientServiceImplement implements ClientService {
     @Override
     public Client findById(Long id) {
         Optional<Client> client = clientRepository.findById(id);
-        return client.orElse(null);
+        return client.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Client.class.getName()));
     }
 
     @Override
