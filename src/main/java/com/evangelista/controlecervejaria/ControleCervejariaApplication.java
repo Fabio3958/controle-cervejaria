@@ -6,6 +6,7 @@ import com.evangelista.controlecervejaria.model.Demand;
 import com.evangelista.controlecervejaria.repository.BarrelRepository;
 import com.evangelista.controlecervejaria.repository.ClientRepository;
 import com.evangelista.controlecervejaria.repository.DemandRepository;
+import com.evangelista.controlecervejaria.service.DemandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +23,7 @@ public class ControleCervejariaApplication implements CommandLineRunner {
 	@Autowired
 	BarrelRepository barrelRepository;
 	@Autowired
-	DemandRepository demandRepository;
+	DemandService demandService;
 
 	DemandController demandController = new DemandController();
 
@@ -57,12 +58,12 @@ public class ControleCervejariaApplication implements CommandLineRunner {
 		barrelList3.add(barrel5);
 
 
-		Demand demand1 = new Demand(1L, demandController.calculateDemandTotalValue(barrelList1), barrelList1);
-		Demand demand2 = new Demand(2L, demandController.calculateDemandTotalValue(barrelList2), barrelList2);
-		Demand demand3 = new Demand(3L, demandController.calculateDemandTotalValue(barrelList3), barrelList3);
-		demandRepository.save(demand1);
-		demandRepository.save(demand2);
-		demandRepository.save(demand3);
+		Demand demand1 = new Demand(1L, demandService.calculateDemandTotalValue(barrelList1), barrelList1);
+		Demand demand2 = new Demand(2L, demandService.calculateDemandTotalValue(barrelList2), barrelList2);
+		Demand demand3 = new Demand(3L, demandService.calculateDemandTotalValue(barrelList3), barrelList3);
+		demandService.save(demand1);
+		demandService.save(demand2);
+		demandService.save(demand3);
 
 		List<Demand> demandList = new ArrayList<>();
 		demandList.add(demand1);
