@@ -1,45 +1,41 @@
 package com.evangelista.controlecervejaria.controller;
 
 import com.evangelista.controlecervejaria.model.Client;
-import com.evangelista.controlecervejaria.repository.ClientRepository;
+import com.evangelista.controlecervejaria.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
 public class ClientController {
 
     @Autowired
-    ClientRepository clientRepository;
+    ClientService clientService;
 
     @GetMapping
     public List<Client> getAllClients(){
-        return clientRepository.findAll();
+        return clientService.findAll();
     }
 
     @GetMapping("/{id}")
     public Client getClientById(@PathVariable("id") Long id){
-        Optional<Client> client = clientRepository.findById(id);
-        return client.orElse(null);
+        return clientService.findById(id);
     }
 
     @PostMapping("/salvar")
     public void postClient(@RequestBody Client client){
-        clientRepository.save(client);
+        clientService.save(client);
     }
 
     @PutMapping("/atualizar/{id}")
     public  void putClient(@PathVariable("id") Long id, @RequestBody Client client){
-        Optional<Client> existentClient = clientRepository.findById(id);
-        if (existentClient.isPresent())
-            clientRepository.save(client);
+        clientService.update(id, client);
     }
 
     @DeleteMapping("/apagar/{id}")
     public void deleteClient(@PathVariable("id") Long id){
-        clientRepository.deleteById(id);
+        clientService.delete(id);
     }
 }

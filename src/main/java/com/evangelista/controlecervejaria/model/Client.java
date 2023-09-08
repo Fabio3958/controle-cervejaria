@@ -2,7 +2,6 @@ package com.evangelista.controlecervejaria.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
 
 import java.util.ArrayList;
 import java.util.Date;
