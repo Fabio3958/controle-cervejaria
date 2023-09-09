@@ -2,6 +2,9 @@ package com.evangelista.controlecervejaria.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,8 +18,11 @@ public class Client {
     @Column(name="cliente_id")
     private Long id;
     @Column(name="nome")
+    @NotEmpty(message = "O campo não deve ser vazio")
     private String clientName;
     @Column(name="telefone")
+    @NotEmpty(message = "O campo não deve ser vazio")
+    @Size(min = 11)
     private String clientPhoneNumber;
     @Column(name="email")
     private String clientEmail;
