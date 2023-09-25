@@ -5,8 +5,9 @@ import com.evangelista.controlecervejaria.model.Barrel;
 import com.evangelista.controlecervejaria.model.Demand;
 import com.evangelista.controlecervejaria.repository.BarrelRepository;
 import com.evangelista.controlecervejaria.repository.ClientRepository;
-import com.evangelista.controlecervejaria.repository.DemandRepository;
 import com.evangelista.controlecervejaria.service.DemandService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
 
+@OpenAPIDefinition(info = @Info(title = "Swagger OpneAPI", version = "1", description = "API desenvolvida para o controle pedidos de uma cervejaria"))
 @SpringBootApplication
 public class ControleCervejariaApplication implements CommandLineRunner {
 
