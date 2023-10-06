@@ -1,6 +1,6 @@
 package com.evangelista.controlecervejaria.controller;
 
-import com.evangelista.controlecervejaria.model.Demand;
+import com.evangelista.controlecervejaria.model.Pedido;
 import com.evangelista.controlecervejaria.service.DemandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,28 +17,28 @@ public class DemandController {
     DemandService demandService;
 
     @GetMapping
-    public ResponseEntity<List<Demand>> getDemands(){
-        List<Demand> demandList = demandService.findAll();
-        return ResponseEntity.ok().body(demandList);
+    public ResponseEntity<List<Pedido>> getDemands(){
+        List<Pedido> pedidoList = demandService.findAll();
+        return ResponseEntity.ok().body(pedidoList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Demand> getDemandById(@PathVariable("id") Long id){
-        Demand demand = demandService.findById(id);
-        return ResponseEntity.ok().body(demand);
+    public ResponseEntity<Pedido> getDemandById(@PathVariable("id") Long id){
+        Pedido pedido = demandService.findById(id);
+        return ResponseEntity.ok().body(pedido);
     }
 
     @PostMapping("salvar")
-    public ResponseEntity<Demand> postDemand(@RequestBody Demand demand){
-        demand.setDemandValue(demandService.calculateDemandTotalValue(demand.getBarrelList()));
-        demandService.save(demand);
-        return ResponseEntity.ok(demand);
+    public ResponseEntity<Pedido> postDemand(@RequestBody Pedido pedido){
+        pedido.setDemandValue(demandService.calculateDemandTotalValue(pedido.getBarrelList()));
+        demandService.save(pedido);
+        return ResponseEntity.ok(pedido);
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Demand> putDemand(@PathVariable("id") Long id, @RequestBody Demand demand){
-        demandService.update(id, demand);
-        return ResponseEntity.ok(demand);
+    public ResponseEntity<Pedido> putDemand(@PathVariable("id") Long id, @RequestBody Pedido pedido){
+        demandService.update(id, pedido);
+        return ResponseEntity.ok(pedido);
     }
 
     @DeleteMapping("/apagar/{id}")

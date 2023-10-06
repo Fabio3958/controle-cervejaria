@@ -1,6 +1,6 @@
 package com.evangelista.controlecervejaria.controller;
 
-import com.evangelista.controlecervejaria.model.Client;
+import com.evangelista.controlecervejaria.model.Cliente;
 import com.evangelista.controlecervejaria.service.ClientService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -25,9 +25,9 @@ public class ClientController {
             @ApiResponse(responseCode = "500", description = "Erro no servidor")
     })
     @GetMapping
-    public ResponseEntity<List<Client>> getAllClients(){
-        List<Client> clientList = clientService.findAll();
-        return ResponseEntity.ok().body(clientList);
+    public ResponseEntity<List<Cliente>> getAllClients(){
+        List<Cliente> clienteList = clientService.findAll();
+        return ResponseEntity.ok().body(clienteList);
     }
 
     @ApiResponses(value = {
@@ -36,9 +36,9 @@ public class ClientController {
             @ApiResponse(responseCode = "500", description = "Erro no servidor")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable("id") Long id){
-        Client client = clientService.findById(id);
-        return ResponseEntity.ok().body(client);
+    public ResponseEntity<Cliente> getClientById(@PathVariable("id") Long id){
+        Cliente cliente = clientService.findById(id);
+        return ResponseEntity.ok().body(cliente);
     }
 
     @ApiResponses(value = {
@@ -47,9 +47,9 @@ public class ClientController {
             @ApiResponse(responseCode = "500", description = "Erro no servidor")
     })
     @PostMapping(value = "/salvar")
-    public ResponseEntity<Client> postClient(@RequestBody Client client){
-        clientService.save(client);
-        return ResponseEntity.ok(client);
+    public ResponseEntity<Cliente> postClient(@RequestBody Cliente cliente){
+        clientService.save(cliente);
+        return ResponseEntity.ok(cliente);
     }
 
     @ApiResponses(value = {
@@ -58,9 +58,9 @@ public class ClientController {
             @ApiResponse(responseCode = "500", description = "Erro no servidor")
     })
     @PutMapping(value = "/atualizar/{id}")
-    public  ResponseEntity<Client> putClient(@PathVariable("id") Long id, @RequestBody Client client){
-        clientService.update(id, client);
-        return ResponseEntity.ok(client);
+    public  ResponseEntity<Cliente> putClient(@PathVariable("id") Long id, @RequestBody Cliente cliente){
+        clientService.update(id, cliente);
+        return ResponseEntity.ok(cliente);
     }
 
     @ApiResponses(value = {

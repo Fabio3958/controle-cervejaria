@@ -1,9 +1,8 @@
 package com.evangelista.controlecervejaria.service.implement;
 
 import com.evangelista.controlecervejaria.model.Barrel;
-import com.evangelista.controlecervejaria.model.Client;
-import com.evangelista.controlecervejaria.model.Demand;
-import com.evangelista.controlecervejaria.repository.DemandRepository;
+import com.evangelista.controlecervejaria.model.Pedido;
+import com.evangelista.controlecervejaria.repository.PedidoRepository;
 import com.evangelista.controlecervejaria.service.DemandService;
 import com.evangelista.controlecervejaria.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,38 +13,38 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DemandServiceImplement implements DemandService {
+public class PedidoServiceImplement implements DemandService {
 
     @Autowired
-    DemandRepository demandRepository;
+    PedidoRepository pedidoRepository;
 
 
     @Override
-    public List<Demand> findAll() {
-        return demandRepository.findAll();
+    public List<Pedido> findAll() {
+        return pedidoRepository.findAll();
     }
 
     @Override
-    public Demand findById(Long id) {
-        Optional<Demand> demand = demandRepository.findById(id);
-        return demand.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Demand.class.getName()));
+    public Pedido findById(Long id) {
+        Optional<Pedido> demand = pedidoRepository.findById(id);
+        return demand.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
     }
 
     @Override
-    public void save(Demand demand) {
-        demandRepository.save(demand);
+    public void save(Pedido pedido) {
+        pedidoRepository.save(pedido);
     }
 
     @Override
-    public void update(Long id, Demand demand) {
-        Optional<Demand> existentDemand = demandRepository.findById(id);
+    public void update(Long id, Pedido pedido) {
+        Optional<Pedido> existentDemand = pedidoRepository.findById(id);
         if (existentDemand.isPresent())
-            demandRepository.save(demand);
+            pedidoRepository.save(pedido);
     }
 
     @Override
     public void delete(Long id) {
-        demandRepository.deleteById(id);
+        pedidoRepository.deleteById(id);
     }
 
     @Override

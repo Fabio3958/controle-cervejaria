@@ -1,13 +1,13 @@
 package com.evangelista.controlecervejaria.service;
 
-import com.evangelista.controlecervejaria.model.Client;
+import com.evangelista.controlecervejaria.model.Cliente;
 
 import java.util.List;
 
 public interface ClientService {
-    List<Client> findAll();
-    Client findById(Long id);
-    void save(Client client);
-    void update(Long id, Client client);
+    List<Cliente> findAll();
+    Cliente findById(Long id);
+    void save(Cliente cliente);
+    void update(Long id, Cliente cliente);
     void delete(Long id);
 }

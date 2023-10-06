@@ -1,7 +1,6 @@
 package com.evangelista.controlecervejaria.service.implement;
 
 import com.evangelista.controlecervejaria.model.Barrel;
-import com.evangelista.controlecervejaria.model.Demand;
 import com.evangelista.controlecervejaria.repository.BarrelRepository;
 import com.evangelista.controlecervejaria.service.BarrelService;
 import com.evangelista.controlecervejaria.service.exceptions.ObjectNotFoundException;
