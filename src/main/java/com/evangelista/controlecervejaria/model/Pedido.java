@@ -17,7 +17,7 @@ public class Pedido {
     private Long id;
     @ManyToMany
     @Column(name = "barril_id")
-    private List<Barrel> barrelList = new ArrayList<>();
+    private List<Barril> barrilList = new ArrayList<>();
     @Column(name = "valor")
-    private Double demandValue;
+    private Double valorPedido;
 }

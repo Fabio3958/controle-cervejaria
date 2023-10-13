@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "barril")
-public class Barrel {
+public class Barril {
     @Id
     @Column(name="barril_id")
     private Long id;
     @Column(name="capacidade")
     @NotNull
-    private Double barrelVolume;
+    private Double capacidadeBarril;
 }

@@ -2,7 +2,7 @@ package com.evangelista.controlecervejaria.service.implement;
 
 import com.evangelista.controlecervejaria.model.Cliente;
 import com.evangelista.controlecervejaria.repository.ClienteRepository;
-import com.evangelista.controlecervejaria.service.ClientService;
+import com.evangelista.controlecervejaria.service.ClienteService;
 import com.evangelista.controlecervejaria.service.ViaCep.Endereco;
 import com.evangelista.controlecervejaria.service.ViaCep.ViaCepService;
 import com.evangelista.controlecervejaria.service.exceptions.ObjectNotFoundException;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClienteServiceImplement implements ClientService {
+public class ClienteServiceImplement implements ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 

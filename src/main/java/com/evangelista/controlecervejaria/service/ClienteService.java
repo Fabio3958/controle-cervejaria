@@ -4,7 +4,7 @@ import com.evangelista.controlecervejaria.model.Cliente;
 
 import java.util.List;
 
-public interface ClientService {
+public interface ClienteService {
     List<Cliente> findAll();
     Cliente findById(Long id);
     void save(Cliente cliente);

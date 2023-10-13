@@ -1,9 +1,9 @@
 package com.evangelista.controlecervejaria.service.implement;
 
-import com.evangelista.controlecervejaria.model.Barrel;
+import com.evangelista.controlecervejaria.model.Barril;
 import com.evangelista.controlecervejaria.model.Pedido;
 import com.evangelista.controlecervejaria.repository.PedidoRepository;
-import com.evangelista.controlecervejaria.service.DemandService;
+import com.evangelista.controlecervejaria.service.PedidoService;
 import com.evangelista.controlecervejaria.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PedidoServiceImplement implements DemandService {
+public class PedidoServiceImplement implements PedidoService {
 
     @Autowired
     PedidoRepository pedidoRepository;
@@ -48,10 +48,10 @@ public class PedidoServiceImplement implements DemandService {
     }
 
     @Override
-    public Double calculateDemandTotalValue(List<Barrel> barrelList){
+    public Double calcularValorTotalDoPedido(List<Barril> barrilList){
         List<Double> barrelValues = new ArrayList<>();
-        for (Barrel barrel : barrelList) {
-            barrelValues.add((barrel.getBarrelVolume()) * 12);
+        for (Barril barril : barrilList) {
+            barrelValues.add((barril.getCapacidadeBarril()) * 12);
         }
         return barrelValues.stream().mapToDouble(Double::doubleValue).sum();
     }
