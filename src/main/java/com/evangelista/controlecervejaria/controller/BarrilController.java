@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/barris")
-public class BarrelController {
+public class BarrilController {
 
     @Autowired
     BarrilService barrilService;
@@ -21,9 +21,15 @@ public class BarrelController {
         return ResponseEntity.ok().body(barrilList);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Barril> getBarrilById(@PathVariable("id") Long id){
         Barril barril = barrilService.findById(id);
+        return ResponseEntity.ok().body(barril);
+    }
+
+    @GetMapping("/capacidade/{capacidadeBarril}")
+    public ResponseEntity<List<Barril>> getBarrilByCapacidade(@PathVariable("capacidadeBarril") Double capacidade){
+        List<Barril> barril = barrilService.findByCapacidadeBarril(capacidade);
         return ResponseEntity.ok().body(barril);
     }
 

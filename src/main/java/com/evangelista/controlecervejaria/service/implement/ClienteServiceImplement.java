@@ -27,10 +27,14 @@ public class ClienteServiceImplement implements ClienteService {
 
     @Override
     public Cliente findById(Long id) {
-        Optional<Cliente> client = clienteRepository.findById(id);
-        return client.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        return cliente.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
     }
 
+    @Override
+    public List<Cliente> findByNomeCliente(String nome){
+        return clienteRepository.findByNomeCliente(nome);
+    }
     @Override
     public void save(Cliente cliente) {
         Endereco endereco = viaCepService.getEndereco(cliente.getCep());

@@ -24,7 +24,12 @@ public class BarrilServiceImplement implements BarrilService {
     @Override
     public Barril findById(Long id) {
         Optional<Barril> barril = barrilRepository.findById(id);
-        return barril.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Barril.class.getName()));
+        return barril.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id));
+    }
+
+    @Override
+    public List<Barril> findByCapacidadeBarril(Double capacidade){
+        return barrilRepository.findByCapacidadeBarril(capacidade);
     }
 
     @Override
