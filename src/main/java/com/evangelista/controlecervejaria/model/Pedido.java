@@ -15,9 +15,6 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="pedido_id")
     private Long id;
-    @ManyToMany
-    @Column(name = "barril_id")
-    private List<Barril> barrilList = new ArrayList<>();
     @Column(name = "valor")
     private Double valorPedido;
 }

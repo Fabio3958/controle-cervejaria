@@ -25,8 +25,6 @@ public class Cliente {
     @NotEmpty(message = "O campo não deve ser vazio")
     @Size(min = 11)
     private String telefoneCliente;
-    @Column(name="email")
-    private String emailCliente;
     @Column(name="data_de_nascimento")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date nascimentoCliente;

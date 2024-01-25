@@ -17,32 +17,31 @@ public class PedidoController {
     PedidoService pedidoService;
 
     @GetMapping
-    public ResponseEntity<List<Pedido>> getDemands(){
+    public ResponseEntity<List<Pedido>> getPedidos(){
         List<Pedido> pedidoList = pedidoService.findAll();
         return ResponseEntity.ok().body(pedidoList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pedido> getDemandById(@PathVariable("id") Long id){
+    public ResponseEntity<Pedido> getPedidoById(@PathVariable("id") Long id){
         Pedido pedido = pedidoService.findById(id);
         return ResponseEntity.ok().body(pedido);
     }
 
     @PostMapping("salvar")
-    public ResponseEntity<Pedido> postDemand(@RequestBody Pedido pedido){
-        pedido.setValorPedido(pedidoService.calcularValorTotalDoPedido(pedido.getBarrilList()));
+    public ResponseEntity<Pedido> postPedidos(@RequestBody Pedido pedido){
         pedidoService.save(pedido);
         return ResponseEntity.ok(pedido);
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Pedido> putDemand(@PathVariable("id") Long id, @RequestBody Pedido pedido){
+    public ResponseEntity<Pedido> putPedidos(@PathVariable("id") Long id, @RequestBody Pedido pedido){
         pedidoService.update(id, pedido);
         return ResponseEntity.ok(pedido);
     }
 
     @DeleteMapping("/apagar/{id}")
-    public ResponseEntity<Void> deleteDemand(@PathVariable("id") Long id){
+    public ResponseEntity<Void> deletePedido(@PathVariable("id") Long id){
         pedidoService.delete(id);
         return ResponseEntity.ok().build();
     }
