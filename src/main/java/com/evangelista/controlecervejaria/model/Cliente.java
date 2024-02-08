@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -25,8 +27,6 @@ public class Cliente {
     @NotEmpty(message = "O campo não deve ser vazio")
     @Size(min = 11)
     private String telefoneCliente;
-    @Column(name="email")
-    private String emailCliente;
     @Column(name="data_de_nascimento")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date nascimentoCliente;

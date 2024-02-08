@@ -16,13 +16,13 @@ public class ClienteController {
     ClienteService clienteService;
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> getAllClients(){
+    public ResponseEntity<List<Cliente>> getClientes(){
         List<Cliente> clienteList = clienteService.findAll();
         return ResponseEntity.ok().body(clienteList);
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Cliente> getClientById(@PathVariable("id") Long id){
+    public ResponseEntity<Cliente> getClienteById(@PathVariable("id") Long id){
         Cliente cliente = clienteService.findById(id);
         return ResponseEntity.ok().body(cliente);
     }
@@ -34,19 +34,19 @@ public class ClienteController {
     }
 
     @PostMapping(value = "/salvar")
-    public ResponseEntity<Cliente> postClient(@RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> postCliente(@RequestBody Cliente cliente){
         clienteService.save(cliente);
         return ResponseEntity.ok(cliente);
     }
 
     @PutMapping(value = "/atualizar/{id}")
-    public  ResponseEntity<Cliente> putClient(@PathVariable("id") Long id, @RequestBody Cliente cliente){
+    public  ResponseEntity<Cliente> putCliente(@PathVariable("id") Long id, @RequestBody Cliente cliente){
         clienteService.update(id, cliente);
         return ResponseEntity.ok(cliente);
     }
 
     @DeleteMapping(value = "/apagar/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable("id") Long id){
+    public ResponseEntity<Void> deleteCliente(@PathVariable("id") Long id){
         clienteService.delete(id);
         return ResponseEntity.ok().build();
     }

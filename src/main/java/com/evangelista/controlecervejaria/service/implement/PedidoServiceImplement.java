@@ -1,6 +1,5 @@
 package com.evangelista.controlecervejaria.service.implement;
 
-import com.evangelista.controlecervejaria.model.Barril;
 import com.evangelista.controlecervejaria.model.Pedido;
 import com.evangelista.controlecervejaria.repository.PedidoRepository;
 import com.evangelista.controlecervejaria.service.PedidoService;
@@ -45,14 +44,5 @@ public class PedidoServiceImplement implements PedidoService {
     @Override
     public void delete(Long id) {
         pedidoRepository.deleteById(id);
-    }
-
-    @Override
-    public Double calcularValorTotalDoPedido(List<Barril> barrilList){
-        List<Double> barrelValues = new ArrayList<>();
-        for (Barril barril : barrilList) {
-            barrelValues.add((barril.getCapacidadeBarril()) * 12);
-        }
-        return barrelValues.stream().mapToDouble(Double::doubleValue).sum();
     }
 }
