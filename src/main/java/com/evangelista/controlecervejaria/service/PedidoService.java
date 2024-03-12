@@ -1,7 +1,5 @@
 package com.evangelista.controlecervejaria.service;
-
 import com.evangelista.controlecervejaria.model.Pedido;
-
 import java.util.List;
 
 public interface PedidoService {

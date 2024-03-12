@@ -3,9 +3,11 @@ package com.evangelista.controlecervejaria.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Item")
 public class Item {
@@ -17,5 +19,4 @@ public class Item {
     private String nomeItem;
     @Column(name = "valor_item")
     private Double valorItem;
-
 }

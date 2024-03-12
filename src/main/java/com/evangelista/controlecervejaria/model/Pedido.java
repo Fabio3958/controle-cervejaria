@@ -3,12 +3,14 @@ package com.evangelista.controlecervejaria.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 
 @Data
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "pedido")
 public class Pedido {

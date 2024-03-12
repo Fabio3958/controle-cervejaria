@@ -1,8 +1,10 @@
 package com.evangelista.controlecervejaria.service;
 
 import com.evangelista.controlecervejaria.model.Item;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface ItemService {
 

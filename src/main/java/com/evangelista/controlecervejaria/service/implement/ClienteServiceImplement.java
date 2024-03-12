@@ -41,7 +41,6 @@ public class ClienteServiceImplement implements ClienteService {
         cliente.setCidadeCliente(endereco.getLocalidade());
         cliente.setBairroCliente(endereco.getBairro());
         cliente.setLogradouroCliente(endereco.getLogradouro());
-        cliente.setComplementoCliente((endereco.getComplemento()));
         clienteRepository.save(cliente);
     }
 
