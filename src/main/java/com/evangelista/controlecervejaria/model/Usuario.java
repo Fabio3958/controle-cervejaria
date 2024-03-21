@@ -1,6 +1,7 @@
 package com.evangelista.controlecervejaria.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +16,21 @@ import java.util.Collection;
 @AllArgsConstructor
 public class Usuario implements UserDetails {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @NotNull
+    private Long id;
+
+    @Column(name = "login")
+    @NotNull
     private String login;
+
+    @Column(name = "senha")
+    @NotNull
     private String password;
+
+    @Column(name = "role")
+    @NotNull
     private String role;
 
     @Override
